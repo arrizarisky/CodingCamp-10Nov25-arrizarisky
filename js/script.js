@@ -36,16 +36,19 @@ form.addEventListener("submit", (e) => {
   dateInput.value = "";
 });
 
-function saveToLocal() {
-  localStorage.setItem("todos", JSON.stringify(todos));
-}
-
 function loadFromLocal() {
   const data = localStorage.getItem("todos");
   if (data) {
     todos = JSON.parse(data);
   }
 }
+
+function saveToLocal() {
+  localStorage.setItem("todos", JSON.stringify(todos));
+}
+
+loadFromLocal();
+renderList();
 
 function renderList() {
   list.innerHTML = "";
@@ -93,7 +96,6 @@ function deleteTodo(id) {
   todos = todos.filter((t) => t.id !== id);
   renderList();
   saveToLocal();
-  renderList();
 }
 
 function toggleStatus(id) {
@@ -105,7 +107,6 @@ function toggleStatus(id) {
   });
   renderList();
   saveToLocal();
-  renderList();
 }
 
 filter.addEventListener("change", renderList);
@@ -114,5 +115,4 @@ deleteAllBtn.addEventListener("click", () => {
   todos = [];
   renderList();
   saveToLocal();
-  renderList();
 });
