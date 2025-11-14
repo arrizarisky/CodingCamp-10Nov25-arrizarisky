@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todolist | Arriza</title>
+
+    <!-- Link to external CSS file -->
+    <link rel="stylesheet" href="css/style.css" />
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body class="bg-yellow-300 text-black min-h-screen flex justify-center p-10">
+    <div class="w-full max-w-xl p-6 brutal-border bg-white">
+      <h1
+        class="text-4xl font-extrabold mb-6 uppercase tracking-wider brutal-title"
+      >
+        To-Do List
+      </h1>
+
+      <!-- FORM -->
+      <form id="todoForm" class="space-y-4 brutal-border p-4">
+        <div>
+          <label class="font-bold block mb-1">To-Do</label>
+          <input
+            type="text"
+            id="todoInput"
+            class="w-full p-3 brutal-input"
+            placeholder="Tulis tugas kamu..."
+          />
+        </div>
+
+        <div>
+          <label class="font-bold block mb-1">Tanggal</label>
+          <input type="date" id="dateInput" class="w-full p-3 brutal-input" />
+        </div>
+
+        <button type="submit" class="w-full p-3 font-bold uppercase brutal-btn">
+          Add Task
+        </button>
+
+        <p id="errorMsg" class="text-red-600 font-bold text-sm hidden">
+          Form tidak boleh kosong.
+        </p>
+      </form>
+
+      <!-- FILTER -->
+      <div class="mt-6 brutal-border p-4">
+        <label class="font-bold">Filter:</label>
+        <select id="filter" class="mt-2 p-2 brutal-input">
+          <option value="all">Semua</option>
+          <option value="today">Hari ini</option>
+          <option value="upcoming">Mendatang</option>
+        </select>
+
+        <button
+          id="deleteAllBtn"
+          class="p-3 bg-red-600 text-white font-bold brutal-border"
+        >
+          Delete All
+        </button>
+      </div>
+
+      <!-- TABLE -->
+      <div class="mt-6 overflow-x-auto">
+        <table class="w-full brutal-border">
+          <thead>
+            <tr class="bg-black text-yellow-300">
+              <th class="p-3 border border-black">Task</th>
+              <th class="p-3 border border-black">Due Date</th>
+              <th class="p-3 border border-black">Status</th>
+              <th class="p-3 border border-black">Action</th>
+            </tr>
+          </thead>
+          <tbody id="todoList"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>
